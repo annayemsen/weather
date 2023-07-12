@@ -154,3 +154,6 @@ h2 {
 .item {
   text-align: center;
 }
+.repository-link {
+  color: white;
+}
