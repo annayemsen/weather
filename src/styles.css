@@ -1,0 +1,156 @@
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Raleway', sans-serif; */
+body {
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    rgb(43, 50, 178) 0%,
+    rgb(20, 136, 204) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.main-content {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.logo {
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  padding-right: 30px;
+  margin: 0px;
+  text-shadow: 8px 4px 7px rgba(0, 0, 0, 0.2);
+}
+form {
+  width: 60%;
+  position: relative;
+}
+input {
+  width: 100%;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.15);
+}
+input:focus {
+  outline: none;
+}
+input:hover,
+input:focus,
+.current-button:hover {
+  box-shadow: 0 0px 32px 0 rgba(128, 214, 255, 0.37);
+}
+input:focus::placeholder {
+  color: transparent;
+}
+::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.search-button {
+  border: none;
+  background: none;
+  position: absolute;
+  top: 10px;
+  right: -10px;
+}
+.current-button {
+  height: 40px;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.current-button,
+.search-button:hover {
+  cursor: pointer;
+}
+.location-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.location {
+  font-size: 40px;
+}
+.fa-location-dot {
+  position: relative;
+  top: -5px;
+}
+h1 {
+  display: inline;
+  font-size: 50px;
+}
+.current-date {
+  font-size: 25px;
+}
+.current-weather-container {
+  margin: 30px 0 50px;
+  display: flex;
+}
+
+.current-temp-container {
+  padding: 10px;
+  display: flex;
+  border-right: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.weather-icon {
+  height: 160px;
+  margin-right: 25px;
+}
+.current-temperature {
+  font-size: 110px;
+  line-height: 1;
+}
+#description {
+  font-size: 20px;
+}
+
+.indicators-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+}
+.indicators-container .row {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+.value {
+  font-size: 20px;
+  font-weight: 500;
+}
+.label {
+  color: rgba(255, 255, 255, 0.6);
+}
+h2 {
+  font-size: 30px;
+}
+.forecast-item {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 10px 25px;
+}
+.forecast-icon {
+  height: 50px;
+}
+.item {
+  text-align: center;
+}
