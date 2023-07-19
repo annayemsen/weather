@@ -73,7 +73,7 @@ function askPermission() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 function showTemperature(response) {
-  let tempElement = document.querySelector("#current-degree-value");
+  let tempElement = document.querySelector("#current-temperature");
   let temperature = Math.round(response.data.main.temp);
   tempElement.innerHTML = temperature;
   let maxTempElement = document.querySelector("#current-max-temp");
@@ -97,3 +97,21 @@ function showTemperature(response) {
     cityName.innerHTML = currentCity;
   }
 }
+
+// function changeToFahrenheit(event) {
+//   event.preventDefault();
+//   fahrenheit.classList.add("clicked");
+//   celsius.classList.remove("clicked");
+//   currentTemp.innerHTML = MathRound((currentTemp.textContent * 9) / 5 + 32);
+// }
+// let fahrenheit = document.querySelector("#fahrenheit");
+// fahrenheit.addEventListener("click", changeToFahrenheit);
+
+// function changeToCelsius(event) {
+//   event.preventDefault();
+//   celsius.classList.add("clicked");
+//   fahrenheit.classList.remove("clicked");
+// }
+// let celsius = document.querySelector("#celsius");
+// celsius.addEventListener("click", changeToCelsius);
+// let currentTemp = document.querySelector("#current-temperature");

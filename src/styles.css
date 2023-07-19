@@ -12,7 +12,7 @@ body {
   background-attachment: fixed;
 }
 .main-content {
-  max-width: 800px;
+  max-width: 850px;
   margin: 30px auto;
   padding: 20px;
 }
@@ -60,10 +60,9 @@ input:focus::placeholder {
   background: none;
   position: absolute;
   top: 10px;
-  right: -10px;
+  right: 10px;
 }
 .current-button {
-  height: 40px;
   color: white;
   padding: 10px 25px;
   border-radius: 5px;
@@ -95,20 +94,20 @@ h1 {
 }
 .current-weather-container {
   margin: 30px 0 50px;
-  display: flex;
 }
 
 .current-temp-container {
   padding: 10px;
   display: flex;
   border-right: 2px solid rgba(255, 255, 255, 0.4);
+  position: relative;
 }
 
 .weather-icon {
   height: 160px;
-  margin-right: 25px;
+  margin-right: 40px;
 }
-.current-temperature {
+#current-temperature {
   font-size: 110px;
   line-height: 1;
 }
@@ -116,24 +115,37 @@ h1 {
   font-size: 20px;
 }
 
-.indicators-container {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 50%;
+.units {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 20px;
+}
+.clicked {
+  font-size: 23px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 5px 9px 5px 7px;
+}
+.units a {
+  color: white;
+  text-decoration: none;
+}
+.units a:hover {
+  cursor: pointer;
 }
 .indicators-container .row {
+  height: 100%;
   text-align: center;
-  display: flex;
-  justify-content: space-around;
 }
 .value {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 500;
 }
 .label {
   color: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
 }
 h2 {
   font-size: 30px;
