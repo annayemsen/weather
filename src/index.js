@@ -52,7 +52,7 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
-search("Madrid");
+search("Tiraspol");
 
 function showPosition(position) {
   let lat = position.coords.latitude;
@@ -92,6 +92,8 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#weather-icon");
   iconElement.setAttribute("src", `icons/${response.data.weather[0].icon}.svg`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  fahrenheit.classList.remove("clicked");
+  celsius.classList.add("clicked");
 }
 function changeToFahrenheit(event) {
   event.preventDefault();
@@ -107,18 +109,22 @@ function changeToFahrenheit(event) {
   let currentMinTemp = (currentCelsiusMinTemp * 9) / 5 + 32;
   currentMinTempElement.innerHTML = Math.round(currentMinTemp);
 }
-// function changeToCelsius(event) {
-//   event.preventDefault();
-//   let tempElement = document.querySelector("#current-temperature");
-//   fahrenheit.classList.remove("clicked");
-//   celsius.classList.add("clicked");
-//   tempElement = tempElement.innerHTML;
-// }
+function changeToCelsius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#current-temperature");
+  fahrenheit.classList.remove("clicked");
+  celsius.classList.add("clicked");
+  tempElement.innerHTML = Math.round(celsiusTemp);
+  let currentMaxTempElement = document.querySelector("#current-max-temp");
+  currentMaxTempElement.innerHTML = Math.round(currentCelsiusMaxTemp);
+  let currentMinTempElement = document.querySelector("#current-min-temp");
+  currentMinTempElement.innerHTML = Math.round(currentCelsiusMinTemp);
+}
 let celsiusTemp = null;
 let currentCelsiusMaxTemp = null;
 let currentCelsiusMinTemp = null;
 
-// let celsius = document.querySelector("#celsius");
-// celsius.addEventListener("click", changeToCelsius);
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", changeToCelsius);
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", changeToFahrenheit);
