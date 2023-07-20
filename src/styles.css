@@ -29,7 +29,6 @@ body {
   text-shadow: 8px 4px 7px rgba(0, 0, 0, 0.2);
 }
 form {
-  width: 60%;
   position: relative;
 }
 input {
@@ -55,7 +54,7 @@ input:focus::placeholder {
 ::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
-.search-button {
+#search-button {
   border: none;
   background: none;
   position: absolute;
@@ -140,8 +139,10 @@ h1 {
   height: 100%;
   text-align: center;
 }
-.value {
+.indicators-items {
   font-size: 25px;
+}
+.value {
   font-weight: 500;
 }
 .label {

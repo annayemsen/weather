@@ -27,65 +27,69 @@
   <body>
     <div class="container">
       <div class="main-content">
-        <div class="header">
-          <p class="logo">weather</p>
-          <form id="search-form">
-            <input
-              type="text"
-              placeholder="find your city"
-              autocomplete="off"
-              id="city-input"
-            />
-            <button class="search-button">
-              <i
-                class="fa-solid fa-magnifying-glass"
-                style="color: #daf0ec"
-              ></i>
-            </button>
-          </form>
-          <button class="current-button" id="current-button">CURRENT</button>
+        <div class="header row">
+          <div class="col-2"><p class="logo">weather</p></div>
+          <div class="col-8">
+            <form id="search-form">
+              <input
+                type="text"
+                placeholder="find your city"
+                autocomplete="off"
+                id="city-input"
+              />
+              <button id="search-button" type="submit">
+                <i
+                  class="fa-solid fa-magnifying-glass"
+                  style="color: #daf0ec"
+                ></i>
+              </button>
+            </form>
+          </div>
+          <div class="col-2">
+            <button class="current-button" id="current-button">CURRENT</button>
+          </div>
         </div>
         <div class="location-date">
           <div class="location">
             <i class="fa-solid fa-location-dot" style="color: #daf0ec"></i>
-            <h1>Madrid</h1>
+            <h1></h1>
           </div>
           <div class="current-date" id="current-date"></div>
         </div>
         <div class="current-weather-container row">
           <div class="current-temp-container col-md-auto">
             <img id="weather-icon" src="" alt="" />
-            <div class="temp-description">
-              <span id="current-temperature">21</span>
+            <div>
+              <span id="current-temperature"></span>
               <div class="units">
                 <a href="#" id="celsius">°C</a>
                 |
                 <a href="#" id="fahrenheit">°F</a>
               </div>
               <br />
-              <span id="description">Cloudy</span>
+              <span id="description"></span>
             </div>
           </div>
           <div class="indicators-container col">
-            <div class="row align-items-center">
+            <div class="row align-items-center indicators-items">
               <div class="col">
-                <span id="current-max-temp" class="value">23</span>°
+                <span id="current-max-temp" class="value"></span>°
                 <br />
                 <span class="label">max</span>
               </div>
               <div class="col">
-                <span id="current-humidity" class="value">15</span> %
+                <span id="current-humidity" class="value"></span> %
                 <br />
                 <span class="label">humidity</span>
               </div>
               <div class="w-100"></div>
               <div class="col">
-                <span id="current-min-temp" class="value">15</span>°
+                <span id="current-min-temp" class="value"></span>°
                 <br />
                 <span class="label">min</span>
               </div>
               <div class="col">
-                <span id="current-wind-speed" class="value">15</span> m/s
+                <span id="current-wind-speed" class="value"></span> m/s
                 <br />
                 <span class="label">wind</span>
               </div>

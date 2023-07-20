@@ -37,27 +37,22 @@ function showDate() {
 showDate();
 
 let apiKey = "1266ad07b66517497b1acf79ea5a6a64";
-
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", searchCity);
+form.addEventListener("submit", handleSubmit);
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", askPosition);
 
-function searchCity(event) {
-  event.preventDefault();
-  let cityName = document.querySelector("h1");
-  let cityInput = document.querySelector("#city-input");
-  if (cityInput.value) {
-    let city = cityInput.value;
-    city.trim();
-    let currentCity = city.charAt(0).toUpperCase() + city.slice(1);
-    cityName.innerHTML = currentCity;
-  } else {
-    alert("Please, enter your city");
-  }
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric&exclude=minutely,hourly&appid=${apiKey}`;
+function search(city) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&exclude=minutely,hourly&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+search("Madrid");
 
 function showPosition(position) {
   let lat = position.coords.latitude;
@@ -96,21 +91,5 @@ function showTemperature(response) {
 
   let iconElement = document.querySelector("#weather-icon");
   iconElement.setAttribute("src", `icons/${response.data.weather[0].icon}.svg`);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
-// function changeToFahrenheit(event) {
-//   event.preventDefault();
-//   fahrenheit.classList.add("clicked");
-//   celsius.classList.remove("clicked");
-//   currentTemp.innerHTML = MathRound((currentTemp.textContent * 9) / 5 + 32);
-// }
-// let fahrenheit = document.querySelector("#fahrenheit");
-// fahrenheit.addEventListener("click", changeToFahrenheit);
-
-// function changeToCelsius(event) {
-//   event.preventDefault();
-//   celsius.classList.add("clicked");
-//   fahrenheit.classList.remove("clicked");
-// }
-// let celsius = document.querySelector("#celsius");
-// celsius.addEventListener("click", changeToCelsius);
-// let currentTemp = document.querySelector("#current-temperature");
