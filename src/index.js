@@ -40,9 +40,8 @@ let apiKey = "1266ad07b66517497b1acf79ea5a6a64";
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
-
 let currentButton = document.querySelector("#current-button");
-currentButton.addEventListener("click", askPermission);
+currentButton.addEventListener("click", askPosition);
 
 function searchCity(event) {
   event.preventDefault();
@@ -56,9 +55,7 @@ function searchCity(event) {
   } else {
     alert("Please, enter your city");
   }
-
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric&exclude=minutely,hourly&appid=${apiKey}`;
-
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -69,7 +66,7 @@ function showPosition(position) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-function askPermission() {
+function askPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 function showTemperature(response) {
@@ -96,8 +93,10 @@ function showTemperature(response) {
     let currentCity = response.data.name;
     cityName.innerHTML = currentCity;
   }
-}
 
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.setAttribute("src", `icons/${response.data.weather[0].icon}.svg`);
+}
 // function changeToFahrenheit(event) {
 //   event.preventDefault();
 //   fahrenheit.classList.add("clicked");
