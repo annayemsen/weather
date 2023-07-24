@@ -36,6 +36,52 @@ function showDate() {
 }
 showDate();
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast-container");
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = "";
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="forecast-item row">
+            <div class="forecast-date col">
+              <span class="forecast-day">${day}</span>
+              <br />
+              12/07
+            </div>
+            <div class="col">
+              <img id="forecast-weather-icon" src="icons/01d.svg" alt="" />
+            </div>
+            <div class="col">
+              <span id="forecast-max-temp" class="forecast-value">24</span>°
+              <br />
+              <span class="forecast-label">max</span>
+            </div>
+            <div class="col">
+              <span id="forecast-min-temp" class="forecast-value">12</span>°
+              <br />
+              <span class="forecast-label">min</span>
+            </div>
+            <div class="col">
+              <span class="forecast-value" id="forecast-wind">15</span>
+              m/s
+              <br />
+              <span class="forecast-label">wind</span>
+            </div>
+            <div class="col">
+              <span class="forecast-value" id="forecast-humidity">12</span>
+              %
+              <br />
+              <span class="forecast-label">humidity</span>
+            </div>
+          </div>
+          `;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let apiKey = "1266ad07b66517497b1acf79ea5a6a64";
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -123,8 +169,8 @@ function changeToCelsius(event) {
 let celsiusTemp = null;
 let currentCelsiusMaxTemp = null;
 let currentCelsiusMinTemp = null;
-
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", changeToCelsius);
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", changeToFahrenheit);
+displayForecast();
