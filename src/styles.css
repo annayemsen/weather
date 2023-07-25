@@ -169,36 +169,3 @@ h2 {
 .footer-link {
   color: white;
 }
-
-/* <div class="forecast-item row">
-            <div class="forecast-date col">
-              <span class="forecast-day">wed</span>
-              <br />
-              12/07
-            </div>
-            <div class="col">
-              <img id="forecast-weather-icon" src="icons/01d.svg" alt="" />
-            </div>
-            <div class="col">
-              <span id="forecast-max-temp" class="forecast-value">24</span>°
-              <br />
-              <span class="forecast-label">max</span>
-            </div>
-            <div class="col">
-              <span id="forecast-min-temp" class="forecast-value">12</span>°
-              <br />
-              <span class="forecast-label">min</span>
-            </div>
-            <div class="col">
-              <span class="forecast-value" id="forecast-wind">15</span>
-              m/s
-              <br />
-              <span class="forecast-label">wind</span>
-            </div>
-            <div class="col">
-              <span class="forecast-value" id="forecast-humidity">12</span>
-              %
-              <br />
-              <span class="forecast-label">humidity</span>
-            </div>
-          </div> */

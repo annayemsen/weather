@@ -35,49 +35,85 @@ function showDate() {
   currentDate.innerHTML = `${day} ${hours}:${minutes}, ${date} ${month}`;
 }
 showDate();
+function formatForecastDate(timestamp) {
+  let forecastDate = new Date(timestamp * 1000);
+  let day = forecastDate.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let date = forecastDate.getDate();
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[forecastDate.getMonth()];
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  return days[day] + "<br/>" + date + " " + month;
+}
 
 function displayForecast(response) {
-  console.log(response.data);
+  let forecast = response.data.daily;
+  forecast.splice(0, 1);
   let forecastElement = document.querySelector("#forecast-container");
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHTML = "";
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML += `
     <div class="forecast-item row">
             <div class="forecast-date col">
-              <span class="forecast-day">${day}</span>
-              <br />
-              12/07
+              <span class="forecast-day">${formatForecastDate(
+                forecastDay.dt
+              )}</span>
             </div>
             <div class="col">
-              <img id="forecast-weather-icon" src="icons/01d.svg" alt="" />
+              <img id="forecast-weather-icon" src="icons/${
+                forecastDay.weather[0].icon
+              }.svg" alt="${forecastDay.weather[0].description}" />
             </div>
             <div class="col">
-              <span id="forecast-max-temp" class="forecast-value">24</span>°
+              <span class="forecast-value">${Math.round(
+                forecastDay.temp.max
+              )}</span>°
               <br />
               <span class="forecast-label">max</span>
             </div>
             <div class="col">
-              <span id="forecast-min-temp" class="forecast-value">12</span>°
+              <span class="forecast-value">${Math.round(
+                forecastDay.temp.min
+              )}</span>°
               <br />
               <span class="forecast-label">min</span>
             </div>
             <div class="col">
-              <span class="forecast-value" id="forecast-wind">15</span>
+              <span class="forecast-value">${Math.round(
+                forecastDay.wind_speed
+              )}</span>
               m/s
               <br />
               <span class="forecast-label">wind</span>
             </div>
             <div class="col">
-              <span class="forecast-value" id="forecast-humidity">12</span>
+              <span class="forecast-value">${forecastDay.humidity}</span>
               %
               <br />
               <span class="forecast-label">humidity</span>
             </div>
           </div>
-          `;
+            `;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;
