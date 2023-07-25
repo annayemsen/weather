@@ -36,7 +36,8 @@ function showDate() {
 }
 showDate();
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast-container");
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHTML = "";
@@ -89,7 +90,7 @@ let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", askPosition);
 
 function search(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&exclude=minutely,hourly&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -110,6 +111,15 @@ function showPosition(position) {
 function askPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+function getForecast(coordinates) {
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayForecast);
+}
+function changeCurrentIcon(icon, description) {
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.setAttribute("src", `icons/${icon}.svg`);
+  iconElement.setAttribute("alt", description);
+}
 function showTemperature(response) {
   let tempElement = document.querySelector("#current-temperature");
   celsiusTemp = response.data.main.temp;
@@ -129,17 +139,19 @@ function showTemperature(response) {
   let descriptionElement = document.querySelector("#description");
   let description = response.data.weather[0].description;
   descriptionElement.innerHTML = description;
+
   if (showPosition) {
     let cityName = document.querySelector("h1");
     let currentCity = response.data.name;
     cityName.innerHTML = currentCity;
   }
-
-  let iconElement = document.querySelector("#weather-icon");
-  iconElement.setAttribute("src", `icons/${response.data.weather[0].icon}.svg`);
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+  changeCurrentIcon(
+    response.data.weather[0].icon,
+    response.data.weather[0].description
+  );
   fahrenheit.classList.remove("clicked");
   celsius.classList.add("clicked");
+  getForecast(response.data.coord);
 }
 function changeToFahrenheit(event) {
   event.preventDefault();
