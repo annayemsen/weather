@@ -135,7 +135,7 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
-search("Tiraspol");
+search("Kyiv");
 
 function showPosition(position) {
   let lat = position.coords.latitude;
