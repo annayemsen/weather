@@ -185,40 +185,7 @@ function showTemperature(response) {
     response.data.weather[0].icon,
     response.data.weather[0].description
   );
-  fahrenheit.classList.remove("clicked");
-  celsius.classList.add("clicked");
   getForecast(response.data.coord);
 }
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  fahrenheit.classList.add("clicked");
-  celsius.classList.remove("clicked");
-  let tempElement = document.querySelector("#current-temperature");
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  tempElement.innerHTML = Math.round(fahrenheitTemp);
-  let currentMaxTempElement = document.querySelector("#current-max-temp");
-  let currentMaxTemp = (currentCelsiusMaxTemp * 9) / 5 + 32;
-  currentMaxTempElement.innerHTML = Math.round(currentMaxTemp);
-  let currentMinTempElement = document.querySelector("#current-min-temp");
-  let currentMinTemp = (currentCelsiusMinTemp * 9) / 5 + 32;
-  currentMinTempElement.innerHTML = Math.round(currentMinTemp);
-}
-function changeToCelsius(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#current-temperature");
-  fahrenheit.classList.remove("clicked");
-  celsius.classList.add("clicked");
-  tempElement.innerHTML = Math.round(celsiusTemp);
-  let currentMaxTempElement = document.querySelector("#current-max-temp");
-  currentMaxTempElement.innerHTML = Math.round(currentCelsiusMaxTemp);
-  let currentMinTempElement = document.querySelector("#current-min-temp");
-  currentMinTempElement.innerHTML = Math.round(currentCelsiusMinTemp);
-}
-let celsiusTemp = null;
-let currentCelsiusMaxTemp = null;
-let currentCelsiusMinTemp = null;
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", changeToCelsius);
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", changeToFahrenheit);
+
 displayForecast();

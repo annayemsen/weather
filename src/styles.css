@@ -114,26 +114,13 @@ h1 {
   font-size: 20px;
 }
 
-.units {
-  font-size: 20px;
+.unit {
+  font-size: 25px;
   display: inline;
   vertical-align: top;
   margin-left: 15px;
-}
-.clicked {
-  font-size: 23px;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(0, 0, 0, 0.15);
-  padding: 5px 9px 5px 7px;
-  cursor: default !important;
-}
-.units a {
   color: white;
   text-decoration: none;
-}
-.units a:hover {
-  cursor: pointer;
 }
 .indicators-container .row {
   height: 100%;
